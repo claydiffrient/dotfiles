@@ -1,0 +1,63 @@
+UserKnownHostsFile ~/.ssh/known_hosts ~/.ssh/known_hosts_ca
+
+Host gerrit
+  HostName gerrit.instructure.com
+  IdentityFile ~/.ssh/gerrit_key
+  User cdiffrient
+  Port 29418
+  UseKeychain yes
+
+Host gerrit.instructure.com
+  IdentityFile ~/.ssh/gerrit_key
+  User cdiffrient
+  Port 29418
+  UseKeychain yes
+
+  Host jump
+    HostName jump.canvas.insops.net
+    IdentityFile ~/.ssh/canvas_key
+    User cdiffrient
+    ForwardAgent yes
+    UseKeychain yes
+
+  Host jump-beta
+    HostName jump.test.insops.net
+    IdentityFile ~/.ssh/canvas_key
+    User cdiffrient
+    ForwardAgent yes
+    UseKeychain yes
+
+
+  Host github
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa
+    UseKeychain yes
+
+  Host github.com
+    User git
+    IdentityFile ~/.ssh/id_rsa
+    UseKeychain yes
+
+  Host sd
+    HostName simplydiffrient.com
+    User clay
+    ForwardAgent yes
+    IdentityFile ~/.ssh/id_rsa
+    UseKeychain yes
+
+  Host simplydiffrient.com
+    HostName simplydiffrient.com
+    IdentityFile ~/.ssh/id_rsa
+    UseKeychain yes
+    User dokku
+
+# --- SourceTree Generated ---
+Host claydiffrient-Bitbucket
+	HostName bitbucket.org
+	User claydiffrient
+	PreferredAuthentications publickey
+	IdentityFile /Users/cdiffrient/.ssh/claydiffrient-Bitbucket
+	UseKeychain yes
+	AddKeysToAgent yes
+# ----------------------------
