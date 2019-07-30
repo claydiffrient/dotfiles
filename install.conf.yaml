@@ -1,11 +1,23 @@
-- clean: ['~']
+- clean: ["~"]
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
 
 - link:
+    ~/.zshenv: zshenv
+    ~/.zprofile: zprofile
+    ~/.zshrc: zshrc
+    ~/.zpreztorc: zpreztorc
+    ~/.zprezto: prezto/
     ~/.profile: profile
     ~/.gitconfig: gitconfig
+    ~/.gitignore_global: gitignore_global
     ~/.ssh/config:
-        path: ssh/config
-        create: true
-    ~/.zshrc: zshrc
-
-
+      path: ssh/config
+      create: true
+    ~/.config/karabiner:
+      create: true
+      path: karabiner
+      force: true
+    ~/.vimrc: vimrc
+    ~/.vim: vim/
