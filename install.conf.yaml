@@ -19,5 +19,7 @@
       create: true
       path: karabiner
       force: true
-    ~/.vimrc: vimrc
+    ~/.vim_runtime: vimrc
     ~/.vim: vim/
+- shell:
+    - [sh ~/.vim_runtime/install_awesome_vimrc.sh, Installing Awesome Vim]

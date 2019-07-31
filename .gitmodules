@@ -4,3 +4,6 @@
 [submodule "prezto"]
 	path = prezto
 	url = https://github.com/sorin-ionescu/prezto.git
+[submodule "vimrc"]
+	path = vimrc
+	url = https://github.com/amix/vimrc.git
