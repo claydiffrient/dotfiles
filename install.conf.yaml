@@ -10,6 +10,7 @@
     ~/.zpreztorc: zpreztorc
     ~/.zprezto: prezto/
     ~/.profile: profile
+    ~/.powconfig: powconfig
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
     ~/.ssh/config:
@@ -20,6 +21,5 @@
       path: karabiner
       force: true
     ~/.vim_runtime: vimrc
-    ~/.vim: vim/
 - shell:
     - [sh ~/.vim_runtime/install_awesome_vimrc.sh, Installing Awesome Vim]

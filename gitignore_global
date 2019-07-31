@@ -1,0 +1,12 @@
+*~
+.DS_Store
+.vscode
+.idea/.generators
+.idea/.rakeTasks
+.idea/canvas.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/inspectionProfiles/Project_Default.xml
+**/ignore_for_now/**/*
