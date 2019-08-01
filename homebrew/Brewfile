@@ -8,6 +8,7 @@ brew 'docker'
 brew 'fzf'
 brew 'gpg'
 brew 'nvm'
+brew 'puma-dev'
 brew 'the_silver_searcher'
 brew 'vaulted'
 
