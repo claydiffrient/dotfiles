@@ -31,3 +31,4 @@
       quiet: false
       stdin: true
       stdout: true
+    - [sh rvm/install.sh, Installing RVM]
