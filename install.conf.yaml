@@ -23,6 +23,7 @@
       force: true
     ~/.vim: vim/
     ~/.vimrc: vimrc
+    ~/.curlrc: curlrc
 - shell:
     - [vim +PluginInstall +qall, Installing Vim Plugins]
     - command: sh homebrew/install.sh
