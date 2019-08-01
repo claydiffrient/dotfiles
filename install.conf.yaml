@@ -24,6 +24,7 @@
     ~/.vim: vim/
     ~/.vimrc: vimrc
     ~/.curlrc: curlrc
+    ~/.fzf.zsh: fzf.zsh
 - shell:
     - [vim +PluginInstall +qall, Installing Vim Plugins]
     - command: sh homebrew/install.sh
