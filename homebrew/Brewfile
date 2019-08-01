@@ -1,0 +1,18 @@
+cask_args appdir: '/Applications'
+
+cask 'java' unless system '/usr/libexec/java_home --failfast'
+
+brew 'automake'
+brew 'dinghy'
+brew 'docker'
+brew 'fzf'
+brew 'nvm'
+brew 'the_silver_searcher'
+brew 'vaulted'
+
+cask 'dropbox'
+cask 'firefox'
+cask 'google-chrome'
+cask 'iterm2'
+cask 'sourcetree'
+cask 'slack'

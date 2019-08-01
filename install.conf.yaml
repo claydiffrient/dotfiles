@@ -25,3 +25,8 @@
     ~/.vimrc: vimrc
 - shell:
     - [vim +PluginInstall +qall, Installing Vim Plugins]
+    - command: sh homebrew/install.sh
+      description: Installing homebrew packages
+      quiet: false
+      stdin: true
+      stdout: true
