@@ -7,6 +7,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-vinegar'
+Plugin 'sheerun/vim-polyglot'
 "javascript
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
@@ -23,5 +24,6 @@ endif
 call vundle#end()
 filetype plugin indent on
 
+set number
 syntax enable
 colorscheme night-owl
