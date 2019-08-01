@@ -7,3 +7,9 @@
 [submodule "vimrc"]
 	path = vimrc
 	url = https://github.com/amix/vimrc.git
+[submodule "vim/bundle/Vundle.vim"]
+	path = vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule "vim/bundle/night-owl.vim"]
+	path = vim/bundle/night-owl.vim
+	url = https://github.com/haishanh/night-owl.vim.git
