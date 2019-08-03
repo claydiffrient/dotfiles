@@ -17,21 +17,33 @@
     ~/.ssh/config:
       path: ssh/config
       create: true
-    ~/.config/karabiner:
-      create: true
-      path: karabiner
-      force: true
     ~/.vim: vim/
     ~/.vimrc: vimrc
     ~/.curlrc: curlrc
     ~/.fzf.zsh: fzf.zsh
     ~/.nanorc: nanorc
+    ~/.nano: nano
+
 - shell:
     - [vim +PluginInstall +qall, Installing Vim Plugins]
+    - [sh rvm/install.sh, Installing RVM]
+
+- defaults:
+  link:
+    if: '[ "$(uname)" "==" "Darwin" ]'
+  shell:
+    if: '[ "$(uname)" "==" "Darwin" ]'
+
+- link:
+  ~/.config/karabiner:
+    create: true
+    path: karabiner
+    force: true
+
+- shell:
     - [sh iterm/iterm2-italics.sh, Fixing Italics in iTerm2]
     - command: sh homebrew/install.sh
       description: Installing homebrew packages
       quiet: false
       stdin: true
       stdout: true
-    - [sh rvm/install.sh, Installing RVM]
