@@ -27,6 +27,7 @@
     ~/.fzf.zsh: fzf.zsh
 - shell:
     - [vim +PluginInstall +qall, Installing Vim Plugins]
+    - [sh iterm/iterm2-italics.sh, Fixing Italics in iTerm2]
     - command: sh homebrew/install.sh
       description: Installing homebrew packages
       quiet: false
