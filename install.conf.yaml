@@ -25,6 +25,7 @@
     ~/.vimrc: vimrc
     ~/.curlrc: curlrc
     ~/.fzf.zsh: fzf.zsh
+    ~/.nanorc: nanorc
 - shell:
     - [vim +PluginInstall +qall, Installing Vim Plugins]
     - [sh iterm/iterm2-italics.sh, Fixing Italics in iTerm2]

@@ -13,3 +13,6 @@
 [submodule "vim/bundle/night-owl.vim"]
 	path = vim/bundle/night-owl.vim
 	url = https://github.com/haishanh/night-owl.vim.git
+[submodule "nano"]
+	path = nano
+	url = https://github.com/scopatz/nanorc.git
