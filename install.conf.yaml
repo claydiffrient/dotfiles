@@ -24,6 +24,7 @@
     ~/.fzf.zsh: fzf.zsh
     ~/.nanorc: nanorc
     ~/.nano: nano
+    ~/.lazydocker: lazydocker/
 
 - shell:
     - [vim +PluginInstall +qall, Installing Vim Plugins]

@@ -17,6 +17,8 @@ brew 'vim'
 brew 'mas'
 brew 'rsync'
 brew 'zsh'
+brew 'jesseduffield/lazydocker/lazydocker'
+brew 'wtfutil/wtfutil/wtfutil'
 
 cask 'dashlane'
 cask 'dropbox'
