@@ -1,6 +1,7 @@
 - clean: ["~"]
 
 - shell:
+    - [chsh -s /usr/bin/zsh, Set shell to zsh]
     - [git submodule update --init --recursive, Installing submodules]
 
 - link:
@@ -28,12 +29,6 @@
     - [vim +PluginInstall +qall, Installing Vim Plugins]
     - [sh rvm/install.sh, Installing RVM]
 
-- defaults:
-  link:
-    if: '[ "$(uname)" "==" "Darwin" ]'
-  shell:
-    if: '[ "$(uname)" "==" "Darwin" ]'
-
 - link:
   ~/.config/karabiner:
     create: true
@@ -47,3 +42,4 @@
       quiet: false
       stdin: true
       stdout: true
+    - [sh macos/setup.sh, Setting up Mac Stuff]
