@@ -183,7 +183,7 @@ alias gst="git status"
 
 alias code="code-insiders "
 
-alias lzd='docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v ~/.lazydocker:/.config/jesseduffield/lazydocker lazyteam/lazydocker'
+alias lzd="docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v ~/.lazydocker:/.config/jesseduffield/lazydocker lazyteam/lazydocker"
 
 ################################################################################
 #    _  __                 _       _               _   _

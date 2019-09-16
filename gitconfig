@@ -2,21 +2,17 @@
 	excludesfile = /Users/cdiffrient/.gitignore_global
 	ignoreCase = false
 [difftool "sourcetree"]
-	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [user]
 	name = Clay Diffrient
 	email = clay.diffrient@gmail.com
-[commit]
-	template = /Users/cdiffrient/.stCommitMsg
 [github]
 	username = claydiffrient
 [gerrit "default"]
 	host = gerrit.instructure.com
 	port = 29418
 	user = cdiffrient
-[init]
-	templatedir = /Users/cdiffrient/.git-templates
