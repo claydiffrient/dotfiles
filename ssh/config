@@ -61,3 +61,8 @@ Host claydiffrient-Bitbucket
 	UseKeychain yes
 	AddKeysToAgent yes
 # ----------------------------
+
+Host *
+  UseKeychain yes
+  AddKeysToAgent yes
+  
