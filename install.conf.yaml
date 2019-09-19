@@ -1,7 +1,15 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+      force: true
+    shell:
+      stderr: true
+
 - clean: ["~"]
 
 - shell:
-    - [chsh -s /usr/bin/zsh, Set shell to zsh]
+    - [sh macos/install_xcode.sh]
     - [git submodule update --init --recursive, Installing submodules]
 
 - link:
@@ -17,7 +25,6 @@
     ~/.gitignore_global: gitignore_global
     ~/.ssh/config:
       path: ssh/config
-      create: true
     ~/.vim: vim/
     ~/.vimrc: vimrc
     ~/.curlrc: curlrc
@@ -25,22 +32,27 @@
     ~/.nanorc: nanorc
     ~/.nano: nano
     ~/.lazydocker: lazydocker/
+    ~/Gemfile: Gemfile
+    ~/.gemrc: gemrc
+    ~/.motd: motd.sh
+    ~/.ruby-version: ruby-version
 
 - shell:
-    - [vim +PluginInstall +qall, Installing Vim Plugins]
-    - [sh rvm/install.sh, Installing RVM]
-
-- link:
-  ~/.config/karabiner:
-    create: true
-    path: karabiner
-    force: true
-
-- shell:
-    - [sh iterm/iterm2-italics.sh, Fixing Italics in iTerm2]
     - command: sh homebrew/install.sh
-      description: Installing homebrew packages
+      description: Installing homebrew and packages
       quiet: false
       stdin: true
       stdout: true
+    - [sh ruby/setup.sh, Setting up ruby (via chruby) and system gems]
+    - [vim +PluginInstall +qall, Installing Vim Plugins]
+    - [sh node/install.sh, Set up volta and global packages]
+
+- link:
+    ~/.config/karabiner:
+      create: true
+      path: karabiner
+      force: true
+
+- shell:
+    - [sh iterm/iterm2-italics.sh, Fixing Italics in iTerm2]
     - [sh macos/setup.sh, Setting up Mac Stuff]

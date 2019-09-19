@@ -3,6 +3,8 @@ cask_args appdir: '/Applications'
 cask 'java' unless system '/usr/libexec/java_home --failfast'
 
 brew 'automake'
+brew 'chruby'
+brew 'ruby-install'
 brew 'codekitchen/dinghy/dinghy'
 brew 'docker'
 brew 'docker-machine'
@@ -10,7 +12,7 @@ brew 'docker-compose'
 brew 'fzf'
 brew 'ripgrep'
 brew 'gpg'
-brew 'nvm'
+#brew 'nvm'
 brew 'puma/puma/puma-dev'
 brew 'the_silver_searcher'
 brew 'vaulted'
@@ -23,6 +25,7 @@ brew 'wtfutil/wtfutil/wtfutil'
 brew 'gron'
 brew 'jq'
 brew 'trash'
+brew 'neofetch'
 
 cask 'dashlane'
 cask 'dropbox'
@@ -41,9 +44,19 @@ cask 'hyperdock'
 cask 'dashlane'
 cask 'evernote'
 cask 'caskroom/fonts/font-source-code-pro'
+cask 'caskroom/fonts/font-fira-code'
+cask 'caskroom/fonts/font-hack-nerd-font'
 cask 'alfred'
 cask 'homebrew/cask-versions/visual-studio-code-insiders'
 cask 'karabiner-elements'
 cask 'amazon-music'
 cask 'boom-3d'
 cask 'paw'
+
+mas "Airmail", id: 918858936
+mas "com.linebreak.CloudAppMacOSX", id: 417602904
+mas "DaisyDisk", id: 411643860
+mas "Day One", id: 1055511498
+mas "GarageBand", id: 682658836
+mas "Pixelmator", id: 407963104
+mas "Wunderlist", id: 410628904

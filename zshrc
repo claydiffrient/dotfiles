@@ -71,7 +71,7 @@ switch_project () {
 
 canvas_common () {
   echo '================== PROPER RUBY VERSION =================='
-  rvm use
+  chruby
   echo '================== PROPER NODE VERSION =================='
   echo 'Using Volta for now... so it should be good'
   echo '================== BUNDLE CHECK/UPDATE =================='
@@ -185,6 +185,8 @@ alias code="code-insiders "
 
 alias lzd="docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v ~/.lazydocker:/.config/jesseduffield/lazydocker lazyteam/lazydocker"
 
+alias lc='colorls --sd'
+
 ################################################################################
 #    _  __                 _       _               _   _
 #   | |/ /                | |     (_)             | | (_)
@@ -247,8 +249,8 @@ export TTC_CELSIUS=false
 # export TTC_ACCESS_TOKEN='...'
 # export TTC_ACCESS_TOKEN_SECRET='...'
 
-export NVM_DIR="$HOME/.nvm"
-  . "/usr/local/opt/nvm/nvm.sh"
+# export NVM_DIR="$HOME/.nvm"
+#   . "/usr/local/opt/nvm/nvm.sh"
 
 # Kill space prefixed commands in History
 HISTCONTROL=ignorespace
@@ -275,10 +277,13 @@ iterm2_print_user_vars() {
   iterm2_set_user_var nodeVersion $(node -v)
 }
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
+# chruby
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 
 export VOLTA_HOME="$HOME/.volta"
 [ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
 
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+bash $HOME/.motd

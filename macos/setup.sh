@@ -107,18 +107,18 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Mac App Store Stuff                                                         #
 ###############################################################################
 
-declare -a mas_apps=(
-  '918858936'   # Airmail 3
-  '411643860'   # DaisyDisk
-  '407963104'   # Pixelmator
-  '410628904'   # Wunderlist
-  '1055511498'  # DayOne
-  '417602904'   # CloudApp
-)
+# declare -a mas_apps=(
+#   '918858936'   # Airmail 3
+#   '411643860'   # DaisyDisk
+#   '407963104'   # Pixelmator
+#   '410628904'   # Wunderlist
+#   '1055511498'  # DayOne
+#   '417602904'   # CloudApp
+# )
 
-for app in "${mas_apps[@]}"; do
-  mas install "$app"
-done
+# for app in "${mas_apps[@]}"; do
+#   mas install "$app"
+# done
 
 
 # Restart the Finder or kill the preferences daemon for the change to take effect:

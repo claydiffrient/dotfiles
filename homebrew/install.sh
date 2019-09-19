@@ -17,11 +17,6 @@ fi
 # Make sure we’re using the latest Homebrew
 brew update
 
-# Upgrade any already-installed formulae
-brew upgrade --all
-
 brew tap homebrew/bundle
 
 brew bundle --file=homebrew/Brewfile
-
-brew install yarn
