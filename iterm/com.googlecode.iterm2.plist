@@ -643,9 +643,9 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>530 490 620 392 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>840 564 570 463 0 0 1680 1027 </string>
+	<string>250 104 1018 463 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>840 56 836 971 0 0 1680 1027 </string>
+	<string>840 564 570 463 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>0 8 1067 971 0 0 1680 1027 </string>
 	<key>New Bookmarks</key>
@@ -932,6 +932,8 @@
 			<integer>80</integer>
 			<key>Command</key>
 			<string></string>
+			<key>Cursor Boost</key>
+			<real>0.0</real>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -1368,6 +1370,8 @@
 			<false/>
 			<key>Shortcut</key>
 			<string></string>
+			<key>Show Mark Indicators</key>
+			<false/>
 			<key>Show Status Bar</key>
 			<true/>
 			<key>Silence Bell</key>
@@ -2246,9 +2250,9 @@
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
-		<string>{{0, 0}, {1680, 1050}}</string>
+		<string>{{1680, 185}, {2560, 1440}}</string>
 		<key>topLeft</key>
-		<string>{649, 934}</string>
+		<string>{2828, 1079}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
 	<string>A3A3879B-8739-4838-8E6B-A549BCA01772</string>
@@ -3105,7 +3109,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-09-18T15:24:53Z</date>
+	<date>2019-09-23T06:06:47Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateRelaunchingMarker</key>

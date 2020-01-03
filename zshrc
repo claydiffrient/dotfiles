@@ -73,7 +73,7 @@ canvas_common () {
   echo '================== PROPER RUBY VERSION =================='
   chruby
   echo '================== PROPER NODE VERSION =================='
-  echo 'Using Volta for now... so it should be good'
+  nvm use
   echo '================== BUNDLE CHECK/UPDATE =================='
   bundle check || bundle update
   echo '========================  YARN  ========================='
@@ -249,15 +249,20 @@ export TTC_CELSIUS=false
 # export TTC_ACCESS_TOKEN='...'
 # export TTC_ACCESS_TOKEN_SECRET='...'
 
-# export NVM_DIR="$HOME/.nvm"
-#   . "/usr/local/opt/nvm/nvm.sh"
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 
 # Kill space prefixed commands in History
 HISTCONTROL=ignorespace
 
+export PORT=3000
+
 # Instructure specific stuff
 # source /usr/local/opt/chruby/share/chruby/chruby.sh
 export PGHOST=localhost
+
+# Add time to prompt
+export RPROMPT='%F{242}%*'
 
 export ENABLE_CANVAS_WEBPACK_HOOKS=1
 source ~/exempt/Projects/canvas/frontend_build/webpackHooks/macNotifications.sh
@@ -281,9 +286,8 @@ iterm2_print_user_vars() {
 source /usr/local/share/chruby/chruby.sh
 source /usr/local/share/chruby/auto.sh
 
-export VOLTA_HOME="$HOME/.volta"
-[ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
-
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 bash $HOME/.motd
+
+# The next line updates PATH for Netlify's Git Credential Helper.
+if [ -f '/Users/cdiffrient/.netlify/helper/path.zsh.inc' ]; then source '/Users/cdiffrient/.netlify/helper/path.zsh.inc'; fi

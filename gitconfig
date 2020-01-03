@@ -1,6 +1,7 @@
 [core]
 	excludesfile = /Users/cdiffrient/.gitignore_global
 	ignoreCase = false
+	autocrlf = input
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
@@ -16,3 +17,16 @@
 	host = gerrit.instructure.com
 	port = 29418
 	user = cdiffrient
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[commit]
+	template = /Users/cdiffrient/.stCommitMsg
+
+# This next lines include Netlify's Git Credential Helper configuration in your Git configuration.
+[include]
+  path = /Users/cdiffrient/.netlify/helper/git-config
+[rebase]
+	autoStash = true

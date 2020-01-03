@@ -12,7 +12,7 @@ brew 'docker-compose'
 brew 'fzf'
 brew 'ripgrep'
 brew 'gpg'
-#brew 'nvm'
+brew 'nvm'
 brew 'puma/puma/puma-dev'
 brew 'the_silver_searcher'
 brew 'vaulted'
@@ -26,7 +26,10 @@ brew 'gron'
 brew 'jq'
 brew 'trash'
 brew 'neofetch'
+brew 'postgresql'
+brew 'git-lfs'
 
+cask 'keybase'
 cask 'dashlane'
 cask 'dropbox'
 cask 'firefox'
@@ -52,6 +55,11 @@ cask 'karabiner-elements'
 cask 'amazon-music'
 cask 'boom-3d'
 cask 'paw'
+cask 'postico'
+cask 'steam'
+cask 'microsoft-office'
+cask 'intellij-idea-ce'
+cask 'divvy'
 
 mas "Airmail", id: 918858936
 mas "com.linebreak.CloudAppMacOSX", id: 417602904
@@ -60,3 +68,4 @@ mas "Day One", id: 1055511498
 mas "GarageBand", id: 682658836
 mas "Pixelmator", id: 407963104
 mas "Wunderlist", id: 410628904
+mas "Limechat", id: 414030210

@@ -20,6 +20,8 @@ let g:jsx_ext_required = 0
 Plugin 'leafgarland/typescript-vim'
 " colors
 Plugin 'haishanh/night-owl.vim'
+"Prettier
+Plugin 'prettier/vim-prettier'
 
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"

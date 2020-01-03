@@ -1,4 +1,8 @@
+# chruby
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
 export POW_TIMEOUT=5400
-export POW_DOMAINS=test
-export POW_WORKERS=4
+export DOMAINS=test
+export WORKERS=4
+export THREADS=1
 
