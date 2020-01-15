@@ -1,0 +1,12 @@
+automake
+default-jdk
+default-jre
+fzf
+ripgrep
+silversearcher-ag
+vim
+rsync
+zsh
+gron
+jq
+neofetch
