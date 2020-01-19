@@ -1,0 +1,2 @@
+- shell:
+    - [sh macos/install_xcode.sh]

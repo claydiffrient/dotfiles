@@ -1,0 +1,293 @@
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# Customize to your needs...
+
+###############################################################################
+#  ______                          _     _
+# |  ____|                        | |   (_)
+# | |__     _   _   _ __     ___  | |_   _    ___    _ __    ___
+# |  __|   | | | | | '_ \   / __| | __| | |  / _ \  | '_ \  / __|
+# | |      | |_| | | | | | | (__  | |_  | | | (_) | | | | | \__ \
+# |_|       \__,_| |_| |_|  \___|  \__| |_|  \___/  |_| |_| |___/
+#
+################################################################################
+
+gerrit_setup () {
+  git_remotes=$(git remote -v)
+  if [[ $git_remotes =~ gerrit.instructure.com ]]
+    then
+      echo '================== SETTING UP GIT NAME/EMAIL =================='
+      git config user.name "Clay Diffrient"
+      git config user.email "cdiffrient@instructure.com"
+    else
+      echo 'Aborting because no gerrit remote found'
+  fi
+}
+
+switch_project () {
+  project_name=$1
+  pwd=$(pwd)
+  project_directories=(
+    "$HOME/Projects/"
+    "$HOME/PersonalProjects/"
+    "$HOME/Repositories/"
+    "$HOME/exempt/Projects/"
+    "$HOME/exempt/PersonalProjects/"
+    "$HOME/exempt/Repositories/"
+  )
+
+  for i in "${project_directories[@]}"
+  do
+   full_path="$i$project_name"
+    if [ -d "$full_path" ]; then
+      found=1
+      cd "$full_path"
+      break
+    fi
+  done
+  if [ -z "$found" ]; then
+    echo "No project directory found for $project_name"
+  fi
+  unset full_path
+  unset pwd
+  unset i
+}
+
+###############################################################################
+#
+# Local Canvas development commands
+#
+###############################################################################
+
+canvas_common () {
+  echo '================== PROPER RUBY VERSION =================='
+  chruby
+  echo '================== PROPER NODE VERSION =================='
+  nvm use
+  echo '================== BUNDLE CHECK/UPDATE =================='
+  bundle check || bundle update
+  echo '========================  YARN  ========================='
+  yarn
+  echo '=====================   DB MIGRATE  ====================='
+  bin/rake db:migrate
+  echo '==================  TEST DB MIGRATE  ===================='
+  bin/rake db:migrate RAILS_ENV=test
+  echo '=================   WARMING UP POW   ===================='
+  curl http://canvas.test/login/canvas &  
+}
+
+canvas_build_full() {
+  canvas_common
+  echo '==================== COMPILE ASSETS  ===================='
+  (
+    export COMPILE_ASSETS_WEBPACK_RJS_FALLBACK="1"
+    bundle exec rake canvas:compile_assets
+  )
+  echo '===================== BRAND CONFIGS  ===================='
+  bundle exec rake brand_configs:generate_and_upload_all
+
+}
+
+canvas_build() {
+  canvas_common
+  echo '=====================  YARN BUILD  ======================'
+  yarn run build
+  # echo '===================== BRAND CONFIGS  ===================='
+  # bundle exec rake brand_configs:generate_and_upload_all
+}
+
+csd () {
+  canvas_build
+  yarn run build:js:watch
+}
+
+###############################################################################
+#
+# Docker related Canvas development commands
+#
+###############################################################################
+
+candocker_common () {
+  echo '================== BUNDLE CHECK/UPDATE =================='
+  docker-compose run --rm web bash -c "bundle check || bundle update"
+  echo '========================  YARN  ========================='
+  docker-compose run --rm web yarn
+  echo '=====================   DB MIGRATE  ====================='
+  docker-compose run --rm web bundle exec rake db:migrate
+  echo '==================  TEST DB MIGRATE  ===================='
+  docker-compose run --rm web bundle exec rake db:migrate RAILS_ENV=test
+}
+
+candocker_build_full() {
+  candocker_common
+  echo '==================== COMPILE ASSETS  ===================='
+  docker-compose run -e COMPILE_ASSETS_WEBPACK_RJS_FALLBACK="1" \
+                     --rm web bundle exec rake canvas:compile_assets
+  echo '===================== BRAND CONFIGS  ===================='
+  docker-compose run --rm web bundle exec rake brand_configs:generate_and_upload_all
+}
+
+candocker_build() {
+  candocker_common
+  echo '================ MINIMUM COMPILE ASSETS  ================'
+  docker-compose run -e COMPILE_ASSETS_NPM_INSTALL="0" \
+                     -e COMPILE_ASSETS_STYLEGUIDE="0" \
+                     -e COMPILE_ASSETS_API_DOCS="0" \
+                     --rm web bundle exec rake canvas:compile_assets
+  echo '===================== BRAND CONFIGS  ===================='
+  docker-compose run --rm web bundle exec rake brand_configs:generate_and_upload_all
+}
+
+# Reset the Canvas test DB - the hard way - nothing remains :)
+reset_canvas_test() {
+  dropdb canvas_test
+  echo 'reset_canvas_test step 1/4: canvas_test dropped'
+  createdb canvas_test
+  echo 'reset_canvas_test step 2/4: canvas_test created'
+  psql -c 'GRANT ALL PRIVILEGES ON DATABASE canvas_test TO canvas' -d canvas_test
+  psql -c 'GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO canvas' -d canvas_test
+  psql -c 'GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO canvas' -d canvas_test
+  echo 'reset_canvas_test step 3/4: canvas_test privileges granted'
+  RAILS_ENV=test bundle exec rake db:migrate
+  echo 'reset_canvas_test step 4/4: Migrations completed.'
+}
+
+###############################################################################
+#               _   _
+#       /\     | | (_)
+#      /  \    | |  _    __ _   ___    ___   ___
+#     / /\ \   | | | |  / _` | / __|  / _ \ / __|
+#    / ____ \  | | | | | (_| | \__ \ |  __/ \__ \
+#   /_/    \_\ |_| |_|  \__,_| |___/  \___| |___/
+#
+#
+################################################################################
+
+alias p="switch_project "
+alias stree="/Applications/SourceTree.app/Contents/Resources/stree"
+
+# Better Docker stuffs
+alias dcr="docker-compose run --rm"
+alias dcu="docker-compose up"
+alias gst="git status"
+
+alias code="code-insiders "
+
+alias lzd="docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v ~/.lazydocker:/.config/jesseduffield/lazydocker lazyteam/lazydocker"
+
+alias lc='colorls --sd'
+
+################################################################################
+#    _  __                 _       _               _   _
+#   | |/ /                | |     (_)             | | (_)
+#   | ' /    ___   _   _  | |__    _   _ __     __| |  _   _ __     __ _   ___
+#   |  <    / _ \ | | | | | '_ \  | | | '_ \   / _` | | | | '_ \   / _` | / __|
+#   | . \  |  __/ | |_| | | |_) | | | | | | | | (_| | | | | | | | | (_| | \__ \
+#   |_|\_\  \___|  \__, | |_.__/  |_| |_| |_|  \__,_| |_| |_| |_|  \__, | |___/
+#                   __/ |                                           __/ |
+#                  |___/                                           |___/
+################################################################################
+
+bindkey \^U backward-kill-line
+
+unsetopt CORRECT                      # Disable autocorrect guesses. Happens when typing a wrong
+                                      # command that may look like an existing one.
+
+expand-or-complete-with-dots() {      # This bunch of code displays red dots when autocompleting
+  echo -n "\e[31m......\e[0m"         # a command with the tab key, "Oh-my-zsh"-style.
+  zle expand-or-complete
+  zle redisplay
+}
+zle -N expand-or-complete-with-dots
+bindkey "^I" expand-or-complete-with-dots
+
+unsetopt NO_NOMATCH # Make HEAD^ work
+
+################################################################################
+#    ______                                 _
+#   |  ____|                               | |
+#   | |__    __  __  _ __     ___    _ __  | |_   ___
+#   |  __|   \ \/ / | '_ \   / _ \  | '__| | __| / __|
+#   | |____   >  <  | |_) | | (_) | | |    | |_  \__ \
+#   |______| /_/\_\ | .__/   \___/  |_|     \__| |___/
+#                   | |
+#                   |_|
+################################################################################
+# Dinghy stuff
+export DOCKER_HOST=tcp://192.168.99.100:2376
+export DOCKER_CERT_PATH=/Users/cdiffrient/.docker/machine/machines/dinghy
+export DOCKER_TLS_VERIFY=1
+export DOCKER_MACHINE_NAME=dinghy
+
+# Android stuff
+export ANDROID_HOME=/usr/local/opt/android-sdk
+
+# fzf config
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# Tiny Care Terminal
+
+export TTC_REPOS='~/Projects'
+export TTC_WEATHER='Salt Lake City'
+export TTC_APIKEYS=false
+export TTC_GITBOT="gitlog"
+export TTC_CELSIUS=false
+# exprot TTC_BOTS=''
+# export TTC_CONSUMER_KEY='...'
+# export TTC_CONSUMER_SECRET='...'
+# export TTC_ACCESS_TOKEN='...'
+# export TTC_ACCESS_TOKEN_SECRET='...'
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+
+# Kill space prefixed commands in History
+HISTCONTROL=ignorespace
+
+export PORT=3000
+
+# Instructure specific stuff
+# source /usr/local/opt/chruby/share/chruby/chruby.sh
+export PGHOST=localhost
+
+# Add time to prompt
+export RPROMPT='%F{242}%*'
+
+export ENABLE_CANVAS_WEBPACK_HOOKS=1
+source ~/exempt/Projects/canvas/frontend_build/webpackHooks/macNotifications.sh
+
+# added by travis gem
+[ -f /Users/cdiffrient/.travis/travis.sh ] && source /Users/cdiffrient/.travis/travis.sh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+####
+# iTerm2 Stuff
+####
+source ~/.iterm2_shell_integration.zsh
+
+iterm2_print_user_vars() {
+  iterm2_set_user_var rubyVersion $(ruby -v | awk '{ print $2 }')
+  iterm2_set_user_var nodeVersion $(node -v)
+}
+
+# chruby
+source /usr/local/share/chruby/chruby.sh
+source /usr/local/share/chruby/auto.sh
+
+
+bash $HOME/.motd
+
+# The next line updates PATH for Netlify's Git Credential Helper.
+if [ -f '/Users/cdiffrient/.netlify/helper/path.zsh.inc' ]; then source '/Users/cdiffrient/.netlify/helper/path.zsh.inc'; fi

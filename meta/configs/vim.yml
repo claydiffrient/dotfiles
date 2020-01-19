@@ -1,0 +1,6 @@
+- link:
+  ~/.vim: editors/vim
+  ~/.vimrc: editors/vimrc
+
+- shell:
+  - [vim +PluginInstall +qall, Installing Vim Plugins]

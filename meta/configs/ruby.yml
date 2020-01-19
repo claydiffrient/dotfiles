@@ -1,0 +1,7 @@
+- link:
+    ~/Gemfile: ruby/Gemfile
+    ~/.gemrc: ruby/gemrc
+    ~/.ruby-version: ruby/ruby-version
+
+- shell:
+  - [sh ruby/setup.sh, Setting up ruby (via chruby) and system gems]
