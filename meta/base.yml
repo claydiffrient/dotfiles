@@ -5,9 +5,7 @@
       force: true
     shell:
       stderr: true
+      stdout: true
+      quiet: false
 
 - clean: ["~"]
-
-
-- script:
-  - [git submodule update --init --recursive, Installing submodules]

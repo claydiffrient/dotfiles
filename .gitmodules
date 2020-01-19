@@ -4,12 +4,12 @@
 [submodule "meta/dotbot"]
 	path = meta/dotbot
 	url = https://github.com/anishathalye/dotbot
-[submodule "editors/vim/bundle/Vundle.vim"]
-	path = editors/vim/bundle/Vundle.vim
-	url = https://github.com/VundleVim/Vundle.vim.git
-[submodule "editors/vim/bundle/night-owl.vim"]
-	path = editors/vim/bundle/night-owl.vim
-	url = https://github.com/haishanh/night-owl.vim.git
 [submodule "editors/nano/nanorc"]
 	path = editors/nano/nanorc
 	url = https://github.com/scopatz/nanorc.git
+[submodule "editors/vim/vim/bundle/Vundle.vim"]
+	path = editors/vim/vim/bundle/Vundle.vim
+	url = https://github.com/VundleVim/Vundle.vim.git
+[submodule "editors/vim/vim/bundle/night-owl.vim"]
+	path = editors/vim/vim/bundle/night-owl.vim
+	url = https://github.com/haishanh/night-owl.vim.git
