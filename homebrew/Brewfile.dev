@@ -1,0 +1,13 @@
+cask_args appdir: '/Applications'
+
+# Shell stuff 
+brew 'zsh' # get a newer ZSH than apple ships
+brew 'wtfutil' # cool dashboard
+brew 'neofetch' # neato thing to show system specs
+brew 'jq' # Manipulate json CLI
+brew 'trash' # send stuff to the trash
+
+# Syncing and Git stuff
+brew 'rsync'
+brew 'git-lfs'
+cask 'sourcetree'

@@ -1,71 +1,117 @@
-cask_args appdir: '/Applications'
+# require_relative ./comm
 
+# Tap into some additional things
+tap 'codekitchen/dinghy'
+tap 'puma/puma'
+tap 'jesseduffield/lazydocker'
+tap 'wtfutil/wtfutil'
+tap 'homebrew/cask-versions'
+tap 'homebrew/cask-fonts'
+
+# Make sure java is around
 cask 'java' unless system '/usr/libexec/java_home --failfast'
 
+# Help make configuring stuff easier
 brew 'automake'
-brew 'chruby'
-brew 'ruby-install'
-brew 'codekitchen/dinghy/dinghy'
-brew 'docker'
-brew 'docker-machine'
-brew 'docker-compose'
+
+
+# Utilities to make finding stuff easier
+brew 'the_silver_searcher'
 brew 'fzf'
 brew 'ripgrep'
-brew 'gpg'
-brew 'nvm'
-brew 'puma/puma/puma-dev'
-brew 'the_silver_searcher'
-brew 'vaulted'
-brew 'vim'
-brew 'mas'
-brew 'rsync'
-brew 'zsh'
-brew 'jesseduffield/lazydocker/lazydocker'
-brew 'wtfutil/wtfutil/wtfutil'
 brew 'gron'
-brew 'jq'
-brew 'trash'
-brew 'neofetch'
-brew 'postgresql'
-brew 'git-lfs'
 
-cask 'keybase'
+# Crypto stuff
+brew 'gpg'
+
+# Node stuff
+brew 'nvm'
+
+
+# Manage credentials
+brew 'vaulted'
 cask 'dashlane'
-cask 'dropbox'
-cask 'firefox'
-cask 'homebrew/cask-versions/firefox-developer-edition'
-cask 'google-chrome'
-cask 'homebrew/cask-versions/google-chrome-canary'
-cask 'homebrew/cask-versions/microsoft-edge-beta'
-cask 'homebrew/cask-versions/microsoft-edge-dev'
-cask 'virtualbox'
-cask 'iterm2'
-cask 'sourcetree'
+
+# Editors
+brew 'vim'
+cask 'visual-studio-code-insiders'
+cask 'intellij-idea-ce'
+
+# Install Mac App Store stuff easier
+brew 'mas'
+
+
+
+
+
+#############################
+#### Mac Apps to Install ####
+#############################
+
+# Communication
+cask 'keybase'
 cask 'slack'
 cask 'microsoft-teams'
+mas "Limechat", id: 414030210
+
+# Browsers
+cask 'firefox'
+cask 'firefox-developer-edition'
+cask 'google-chrome'
+cask 'google-chrome-canary'
+cask 'microsoft-edge-beta'
+cask 'microsoft-edge-dev'
+
+# Storage Services
+cask 'dropbox'
+
+# VMs
+cask 'virtualbox'
+
+# Terminals
+cask 'iterm2'
+
+# Window Management / Dock Enhancments
 cask 'hyperdock'
-cask 'dashlane'
+
+# Note Taking
 cask 'evernote'
-cask 'caskroom/fonts/font-source-code-pro'
-cask 'caskroom/fonts/font-fira-code'
-cask 'caskroom/fonts/font-hack-nerd-font'
+mas "Day One", id: 1055511498
+
+# Fonts
+cask 'font-source-code-pro'
+cask 'font-fira-code'
+cask 'font-hack-nerd-font'
+
+# Searching and Workflow
 cask 'alfred'
-cask 'homebrew/cask-versions/visual-studio-code-insiders'
+
+# Keyboard Manipulation
 cask 'karabiner-elements'
+
+# Music
 cask 'amazon-music'
 cask 'boom-3d'
-cask 'paw'
-cask 'postico'
-cask 'steam'
-cask 'microsoft-office'
-cask 'intellij-idea-ce'
-cask 'divvy'
 
+# API Development
+cask 'paw'
+
+# Office
+cask 'microsoft-office'
+
+#############################
+###### App Store Apps #######
+#############################
+
+# Email client
 mas "Airmail", id: 918858936
+
+# Screencasting
 mas "com.linebreak.CloudAppMacOSX", id: 417602904
+
+# Disk Space Management
 mas "DaisyDisk", id: 411643860
-mas "Day One", id: 1055511498
-mas "GarageBand", id: 682658836
+
+# Photo Manipulation
 mas "Pixelmator", id: 407963104
-mas "Wunderlist", id: 410628904
-mas "Limechat", id: 414030210
+
