@@ -36,3 +36,5 @@ filetype plugin indent on
 set number
 syntax enable
 colorscheme night-owl
+
+source /usr/share/doc/fzf/examples/fzf.vim
