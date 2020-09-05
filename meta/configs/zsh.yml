@@ -1,5 +1,5 @@
 - shell:
-    - zsh/set-default-shell.sh
+    - echo "Don't forget to run \`chsh -s $(which zsh)\`"
 - link:
     ~/.zshenv: zsh/zshenv
     ~/.zprofile: zsh/zprofile

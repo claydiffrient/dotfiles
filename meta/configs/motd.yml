@@ -1,2 +1,2 @@
 - link:
-  ~/.motd: misc/motd.sh
+    ~/.motd: motd.sh
