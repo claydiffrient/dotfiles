@@ -1,3 +1,5 @@
+- shell:
+    - zsh/set-default-shell.sh
 - link:
     ~/.zshenv: zsh/zshenv
     ~/.zprofile: zsh/zprofile

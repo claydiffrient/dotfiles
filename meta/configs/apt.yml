@@ -1,0 +1,6 @@
+- shell:
+    - command: sh apt/install.sh
+      description: Installing apt packages
+      quiet: false
+      stdin: true
+      stdout: true

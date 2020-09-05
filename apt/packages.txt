@@ -10,3 +10,5 @@ zsh
 gron
 jq
 neofetch
+bat
+

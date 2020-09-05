@@ -1,4 +1,5 @@
 #!/bin/bash
 
 sudo apt-get update
-cat ./packages.txt | xargs sudo apt-get -y install
+PACKAGEPATH="$(dirname "$(readlink -f "$0")")/packages.txt"
+cat $PACKAGEPATH | xargs sudo apt-get -y install
