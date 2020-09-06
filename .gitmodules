@@ -13,3 +13,18 @@
 [submodule "editors/vim/vim/bundle/night-owl.vim"]
 	path = editors/vim/vim/bundle/night-owl.vim
 	url = https://github.com/haishanh/night-owl.vim.git
+[submodule "editors/vim/vim/pack/plugins/start/vim-vinegar"]
+	path = editors/vim/vim/pack/plugins/start/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
+[submodule "editors/vim/vim/pack/plugins/start/vim-polyglot"]
+	path = editors/vim/vim/pack/plugins/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule "editors/vim/vim/pack/plugins/start/vim-javascript"]
+	path = editors/vim/vim/pack/plugins/start/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "editors/vim/vim/pack/colors/start/night-owl"]
+	path = editors/vim/vim/pack/colors/start/night-owl
+	url = https://github.com/haishanh/night-owl.vim.git
+[submodule "editors/vim/vim/pack/plugins/start/vim-prettier"]
+	path = editors/vim/vim/pack/plugins/start/vim-prettier
+	url = https://github.com/prettier/vim-prettier
