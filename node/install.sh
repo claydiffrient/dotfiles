@@ -2,22 +2,25 @@
 
 # Install volta to manage node/global packages
 curl https://get.volta.sh | bash
-reset
 
 VOLTA_HOME="$HOME/.volta"
-[ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
+PATH="$VOLTA_HOME/bin:$PATH"
 
 # Install latest node version
 volta install node
 
 # Install packages
-declare -a packages=(
+PACKAGES=(
     'yarn'
     '@instructure/instui-cli'
-    'gerrit-cli'
     'hotel'
+    'npm-check-updates'
+    'prettier'
+    'typescript'
+    'create-react-app'
+    'eslint'
 )
 
-for app in "${packages[@]}"; do
+for app in "${PACKAGES[@]}"; do
   volta install "$app"
 done

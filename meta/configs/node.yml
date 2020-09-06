@@ -1,2 +1,2 @@
-shell:
-  - [sh node/install.sh, Set up volta and global packages]
+- shell:
+  - [node/install.sh, Set up volta and global packages]
