@@ -264,9 +264,6 @@ export PGHOST=localhost
 # Add time to prompt
 export RPROMPT='%F{242}%*'
 
-export ENABLE_CANVAS_WEBPACK_HOOKS=1
-source ~/exempt/Projects/canvas/frontend_build/webpackHooks/macNotifications.sh
-
 # added by travis gem
 [ -f /Users/cdiffrient/.travis/travis.sh ] && source /Users/cdiffrient/.travis/travis.sh
 
@@ -275,7 +272,7 @@ source ~/exempt/Projects/canvas/frontend_build/webpackHooks/macNotifications.sh
 ####
 # iTerm2 Stuff
 ####
-source ~/.iterm2_shell_integration.zsh
+# source ~/.iterm2_shell_integration.zsh
 
 iterm2_print_user_vars() {
   iterm2_set_user_var rubyVersion $(ruby -v | awk '{ print $2 }')
@@ -283,8 +280,8 @@ iterm2_print_user_vars() {
 }
 
 # chruby
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
+# source /usr/local/share/chruby/chruby.sh
+# source /usr/local/share/chruby/auto.sh
 
 
 bash $HOME/.motd
