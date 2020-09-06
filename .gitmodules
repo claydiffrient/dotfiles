@@ -28,3 +28,12 @@
 [submodule "editors/vim/vim/pack/plugins/start/vim-prettier"]
 	path = editors/vim/vim/pack/plugins/start/vim-prettier
 	url = https://github.com/prettier/vim-prettier
+[submodule "editors/vim/vim/pack/plugins/start/tsuquyomi"]
+	path = editors/vim/vim/pack/plugins/start/tsuquyomi
+	url = https://github.com/Quramy/tsuquyomi.git
+[submodule "editors/vim/vim/pack/plugins/start/ale"]
+	path = editors/vim/vim/pack/plugins/start/ale
+	url = https://github.com/dense-analysis/ale.git
+[submodule "editors/vim/vim/pack/plugins/start/editorconfig-vim"]
+	path = editors/vim/vim/pack/plugins/start/editorconfig-vim
+	url = https://github.com/editorconfig/editorconfig-vim.git
