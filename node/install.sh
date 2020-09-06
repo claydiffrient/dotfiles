@@ -19,6 +19,7 @@ PACKAGES=(
     'typescript'
     'create-react-app'
     'eslint'
+    'typescript-language-server'
 )
 
 for app in "${PACKAGES[@]}"; do
