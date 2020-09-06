@@ -1,5 +1,20 @@
 set nocompatible              " be iMproved, required
-filetype off                  " required
+
+if has("autocmd")
+        filetype plugin indent on
+endif
+
+if has('syntax')
+        syntax enable
+endif
+
+set autoindent
+set smarttab
+set ruler
+set wildmenu
+set expandtab
+set cursorline
+set number
 
 packloadall
 
@@ -19,8 +34,4 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
-filetype plugin indent on
-
-set number
-syntax enable
 colorscheme night-owl
