@@ -1,0 +1,2 @@
+- shell:
+    - [sh iterm/iterm2-italics.sh, Fixing Italics in iTerm2]

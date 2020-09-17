@@ -1,0 +1,5 @@
+- link:
+    ~/.config/karabiner:
+      create: true
+      path: karabiner
+      force: true

@@ -19,8 +19,7 @@ brew update
 
 brew tap homebrew/bundle
 
-brew bundle --file=homebrew/Brewfile
-brew bundle --file=homebrew/Brewfile.databases
-brew bundle --file=homebrew/Brewfile.dev
-brew bundle --file=homebrew/Brewfile.docker
 brew bundle --file=homebrew/Brewfile.ruby
+brew bundle --file=homebrew/Brewfile.dev
+brew bundle --file=homebrew/Brewfile.databases
+brew bundle --file=homebrew/Brewfile

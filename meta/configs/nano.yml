@@ -1,0 +1,3 @@
+-link:
+  ~/.nanorc: editors/nanorc
+  ~/.nano: editors/nano

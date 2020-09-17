@@ -1,0 +1,9 @@
+- shell:
+    - echo "Don't forget to run \`chsh -s $(which zsh)\`"
+- link:
+    ~/.zshenv: zsh/zshenv
+    ~/.zprofile: zsh/zprofile
+    ~/.zshrc: zsh/zshrc
+    ~/.zlogin: zsh/zlogin
+    ~/.zpreztorc: zsh/zpreztorc
+    ~/.zprezto: zsh/prezto/

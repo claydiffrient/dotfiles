@@ -1,0 +1,2 @@
+- shell:
+  - [sh macos/setup.sh, Setting up Mac Stuff]

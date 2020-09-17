@@ -1,0 +1,6 @@
+- shell:
+    - command: sh homebrew/install.nodocker.sh
+      description: Installing homebrew and packages
+      quiet: false
+      stdin: true
+      stdout: true

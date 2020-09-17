@@ -5,8 +5,12 @@ fzf
 ripgrep
 silversearcher-ag
 vim
+vim-gtk3
+vim-nox
 rsync
 zsh
 gron
 jq
 neofetch
+bat
+

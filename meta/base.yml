@@ -1,0 +1,11 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+      force: true
+    shell:
+      stderr: true
+      stdout: true
+      quiet: false
+
+- clean: ["~"]
