@@ -181,11 +181,18 @@ alias dcr="docker-compose run --rm"
 alias dcu="docker-compose up"
 alias gst="git status"
 
-alias code="code-insiders "
+#alias code="code-insiders "
 
 alias lzd="docker run -it -v /var/run/docker.sock:/var/run/docker.sock -v ~/.lazydocker:/.config/jesseduffield/lazydocker lazyteam/lazydocker"
 
 alias lc='colorls --sd'
+alias bazel='bazelisk '
+
+# Derivita stuff
+alias ddev='bazel run omaha/omaha_dev'
+alias dprod='bazel run omaha/omaha'
+alias dsupport='bazel run support/support'
+alias dspot='bazel run spotcheck -- --port=8081 --storage_path=/tmp/spotcheck --admin_port 8001'
 
 ################################################################################
 #    _  __                 _       _               _   _
@@ -265,26 +272,9 @@ export PGHOST=localhost
 export RPROMPT='%F{242}%*'
 
 export ENABLE_CANVAS_WEBPACK_HOOKS=1
-source ~/exempt/Projects/canvas/frontend_build/webpackHooks/macNotifications.sh
 
 # added by travis gem
 [ -f /Users/cdiffrient/.travis/travis.sh ] && source /Users/cdiffrient/.travis/travis.sh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-####
-# iTerm2 Stuff
-####
-source ~/.iterm2_shell_integration.zsh
-
-iterm2_print_user_vars() {
-  iterm2_set_user_var rubyVersion $(ruby -v | awk '{ print $2 }')
-  iterm2_set_user_var nodeVersion $(node -v)
-}
-
-# chruby
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
 
 
 bash $HOME/.motd
