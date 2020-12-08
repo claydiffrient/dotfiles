@@ -37,9 +37,12 @@ brew 'vim'
 cask 'visual-studio-code-insiders'
 cask 'intellij-idea-ce'
 
+# Google Utilities
+cask 'google-cloud-sdk'
+
+
 # Install Mac App Store stuff easier
 brew 'mas'
-
 
 
 

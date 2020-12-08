@@ -193,7 +193,7 @@ alias ddev='bazel run omaha/omaha_dev'
 alias dprod='bazel run omaha/omaha'
 alias dsupport='bazel run support/support'
 alias dspot='bazel run spotcheck -- --port=8081 --storage_path=/tmp/spotcheck --admin_port 8001'
-
+alias dspot_dev='bazel run spotcheck/spotcheck_dev -- --port=8081 --storage_path=/tmp/spotcheck --admin_port 8001'
 ################################################################################
 #    _  __                 _       _               _   _
 #   | |/ /                | |     (_)             | | (_)
@@ -270,6 +270,11 @@ export PGHOST=localhost
 
 # Add time to prompt
 export RPROMPT='%F{242}%*'
+
+# Setup gcloud SDK
+export CLOUDSDK_PYTHON="$(brew --prefix)/opt/python@3.8/libexec/bin/python"
+source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
 # added by travis gem
 [ -f /Users/cdiffrient/.travis/travis.sh ] && source /Users/cdiffrient/.travis/travis.sh
