@@ -1,12 +1,12 @@
 [core]
-	excludesfile = /Users/cdiffrient/.gitignore_global
+	excludesfile = /Users/claydiffrient/.gitignore_global
 	ignoreCase = false
 	autocrlf = input
 [difftool "sourcetree"]
-	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
-	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [user]
 	name = Clay Diffrient
@@ -24,3 +24,5 @@
   path = /Users/cdiffrient/.netlify/helper/git-config
 [rebase]
 	autoStash = true
+[push]
+	default = current
