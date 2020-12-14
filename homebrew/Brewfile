@@ -69,7 +69,7 @@ cask 'microsoft-edge-dev'
 cask 'dropbox'
 
 # VMs
-cask 'virtualbox'
+# cask 'virtualbox'
 
 # Terminals
 cask 'iterm2'
