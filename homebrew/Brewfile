@@ -79,6 +79,7 @@ cask 'hyperdock'
 
 # Note Taking
 cask 'evernote'
+cask 'notion'
 mas "Day One", id: 1055511498
 
 # Fonts
