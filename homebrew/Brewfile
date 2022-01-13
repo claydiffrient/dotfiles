@@ -37,11 +37,14 @@ brew 'vim'
 cask 'visual-studio-code-insiders'
 cask 'intellij-idea-ce'
 
+# Google Utilities
+cask 'google-cloud-sdk'
+
+
 # Install Mac App Store stuff easier
 brew 'mas'
 
 brew 'gh' # Github CLI
-
 
 
 #############################
@@ -66,7 +69,7 @@ cask 'microsoft-edge-dev'
 cask 'dropbox'
 
 # VMs
-cask 'virtualbox'
+# cask 'virtualbox'
 
 # Terminals
 cask 'iterm2'
@@ -76,6 +79,7 @@ cask 'hyperdock'
 
 # Note Taking
 cask 'evernote'
+cask 'notion'
 mas "Day One", id: 1055511498
 
 # Fonts
