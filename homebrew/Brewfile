@@ -40,7 +40,7 @@ cask 'intellij-idea-ce'
 # Install Mac App Store stuff easier
 brew 'mas'
 
-
+brew 'gh' # Github CLI
 
 
 
