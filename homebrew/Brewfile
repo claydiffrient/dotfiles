@@ -55,6 +55,7 @@ brew 'mas'
 cask 'keybase'
 cask 'slack'
 cask 'microsoft-teams'
+cask 'messenger'
 mas "Limechat", id: 414030210
 
 # Browsers
@@ -76,6 +77,7 @@ cask 'iterm2'
 
 # Window Management / Dock Enhancments
 cask 'hyperdock'
+cask 'divvy'
 
 # Note Taking
 cask 'evernote'
@@ -108,7 +110,8 @@ cask 'microsoft-office'
 #############################
 
 # Email client
-mas "Airmail", id: 918858936
+# Removed in favor of regular Apple Mail until they can figure out how not to be annoying
+# mas "Airmail", id: 918858936
 
 # Screencasting
 mas "com.linebreak.CloudAppMacOSX", id: 417602904

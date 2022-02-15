@@ -189,11 +189,11 @@ alias lc='colorls --sd'
 alias bazel='bazelisk '
 
 # Derivita stuff
-alias ddev='bazel run omaha/omaha_dev'
-alias dprod='bazel run omaha/omaha'
-alias dsupport='bazel run support/support'
-alias dspot='bazel run spotcheck -- --port=8081 --storage_path=/tmp/spotcheck --admin_port 8001'
-alias dspot_dev='bazel run spotcheck/spotcheck_dev -- --port=8081 --storage_path=/tmp/spotcheck --admin_port 8001'
+alias ddev='PORT=8080 bazel run omaha/omaha_dev'
+alias dprod='PORT=8080 bazel run omaha/omaha'
+alias dsupport='PORT=8082 bazel run support/support'
+alias dspot='PORT=8081 bazel run spotcheck'
+alias dspot_dev='PORT=8081 bazel run spotcheck/spotcheck_dev'
 ################################################################################
 #    _  __                 _       _               _   _
 #   | |/ /                | |     (_)             | | (_)
@@ -231,10 +231,11 @@ unsetopt NO_NOMATCH # Make HEAD^ work
 #                   |_|
 ################################################################################
 # Dinghy stuff
-export DOCKER_HOST=tcp://192.168.99.100:2376
-export DOCKER_CERT_PATH=/Users/cdiffrient/.docker/machine/machines/dinghy
-export DOCKER_TLS_VERIFY=1
-export DOCKER_MACHINE_NAME=dinghy
+# export DOCKER_HOST=tcp://192.168.99.100:2376
+# export DOCKER_CERT_PATH=/Users/cdiffrient/.docker/machine/machines/dinghy
+# export DOCKER_TLS_VERIFY=1
+# export DOCKER_MACHINE_NAME=dinghy
+
 
 # Android stuff
 export ANDROID_HOME=/usr/local/opt/android-sdk
