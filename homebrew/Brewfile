@@ -30,7 +30,8 @@ brew 'nvm'
 
 # Manage credentials
 brew 'vaulted'
-cask 'dashlane'
+# cask 'dashlane' # No longer available
+
 
 # Editors
 brew 'vim'
@@ -54,7 +55,7 @@ brew 'gh' # Github CLI
 # Communication
 cask 'keybase'
 cask 'slack'
-cask 'microsoft-teams'
+# cask 'microsoft-teams' Don't really use this anymore
 cask 'messenger'
 mas "Limechat", id: 414030210
 
@@ -76,13 +77,14 @@ cask 'dropbox'
 cask 'iterm2'
 
 # Window Management / Dock Enhancments
-cask 'hyperdock'
-cask 'divvy'
+# cask 'hyperdock' # Not really maintained anymore
+# cask 'divvy'     # Useful for large monitors, but honestly, rectangle is working well
+cask 'rectangle'
 
 # Note Taking
-cask 'evernote'
+# cask 'evernote' #Fully using notion now
 cask 'notion'
-mas "Day One", id: 1055511498
+# mas "Day One", id: 1055511498 # Not using this anymore
 
 # Fonts
 cask 'font-source-code-pro'
@@ -93,7 +95,7 @@ cask 'font-hack-nerd-font'
 cask 'alfred'
 
 # Keyboard Manipulation
-cask 'karabiner-elements'
+# cask 'karabiner-elements' # Not really doing this anymore
 
 # Music
 cask 'amazon-music'
@@ -122,3 +124,4 @@ mas "DaisyDisk", id: 411643860
 # Photo Manipulation
 mas "Pixelmator", id: 407963104
 
+mas "Dashlane", id:517914548

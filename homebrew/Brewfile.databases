@@ -1,5 +1,5 @@
 cask_args appdir: '/Applications'
 
 # Databases
-brew 'postgresql'
+brew 'postgresql@15'
 cask 'postico'

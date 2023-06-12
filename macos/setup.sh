@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # Based on http://mths.be/osx
 
@@ -95,6 +95,22 @@ defaults write com.apple.dock tilesize -int 45
 defaults write com.apple.dock wvous-bl-corner -int 10
 defaults write com.apple.dock wvous-bl-modifier -int 0
 
+# Remove all Icons from the dock
+defaults write com.apple.dock persistent-apps -array
+
+# Add new app shortcuts to the dock.
+APPS_TO_DOCK=(
+    "Visual Studio Code - Insiders"
+    "iTerm"
+    "Google Chrome"
+    "Slack"
+);
+for app in "${APPS_TO_DOCK[@]}"; do
+    if [[ $(dockutil --find "${app}" > /dev/null; echo $?) -ne 0 ]]; then
+        dockutil --add "/Applications/${app}.app" --replacing "${app}" --no-restart
+    fi
+done
+
 ###############################################################################
 # Safari & WebKit                                                             #
 ###############################################################################
@@ -127,7 +143,7 @@ killall Safari
 killall cfprefsd
 
 # Set default shell
-sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
+# sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
 
 # Fix macOS Mojave font smoothing:
-defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
+# defaults write -g CGFontRenderingFontSmoothingDisabled -bool FALSE
