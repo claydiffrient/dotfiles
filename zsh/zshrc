@@ -163,6 +163,55 @@ reset_canvas_test() {
 }
 
 
+###############################################################################
+#
+# Derivita Functions
+#
+###############################################################################
+setup_worktree() {
+  project_name=$1
+  pwd=$(pwd)
+  
+  git worktree add $project_name
+  cd $project_name
+  echo '**** Replacing folder names ****'
+  grep -RiIl 'bazel-derivita' | xargs sed -i '' -e "s/bazel-derivita/bazel-${project_name}/g"
+  grep -RiIl 'bazel-Derivita' | xargs sed -i '' -e "s/bazel-Derivita/bazel-${project_name}/g"
+  echo '**** Running bazel build for dev  ****'
+  bazel build omaha/omaha_dev
+  echo '**** Building booklist to help VS Code with closure stuff ****'
+  bazel build omaha/authoring/booklist
+  echo '**** Completed ****'
+}
+
+reset_worktree() {
+  project_name=$(basename $(pwd))
+  echo '**** Replacing folder names ****'
+  grep -RiIl 'bazel-derivita' | xargs sed -i '' -e "s/bazel-derivita/bazel-${project_name}/g"
+  grep -RiIl 'bazel-Derivita' | xargs sed -i '' -e "s/bazel-Derivita/bazel-${project_name}/g"
+  echo '**** Running bazel build for dev  ****'
+  bazel build omaha/omaha_dev
+  echo '**** Building booklist to help VS Code with closure stuff ****'
+  bazel build omaha/authoring/booklist
+  echo '**** Completed ****'
+}
+
+wtpush() {
+  if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    git push origin HEAD:clay/${PWD##*/}
+  else
+    echo "Not in a working tree"
+  fi
+}
+
+wtreview() {
+  branch=$1
+  cd ~/Derivita/people
+  git worktree add --track -b ${branch} ${branch} origin/${branch}
+  cd $branch
+  reset_worktree
+}
+
 
 # Set up nvm
 export NVM_DIR="$HOME/.nvm"

@@ -26,3 +26,9 @@
 	autoStash = true
 [push]
 	default = current
+[init]
+	defaultBranch = main
+[pull]
+	rebase = false
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
