@@ -63,3 +63,5 @@ if (( $#commands[(i)lesspipe(|.sh)] )); then
 fi
 
 eval "$($(brew --prefix)/bin/brew shellenv)"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"

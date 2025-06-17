@@ -83,7 +83,7 @@ canvas_common () {
   echo '==================  TEST DB MIGRATE  ===================='
   bin/rake db:migrate RAILS_ENV=test
   echo '=================   WARMING UP POW   ===================='
-  curl http://canvas.test/login/canvas &  
+  curl http://canvas.test/login/canvas &
 }
 
 canvas_build_full() {
@@ -171,7 +171,7 @@ reset_canvas_test() {
 setup_worktree() {
   project_name=$1
   pwd=$(pwd)
-  
+
   git worktree add $project_name
   cd $project_name
   echo '**** Replacing folder names ****'
@@ -212,11 +212,48 @@ wtreview() {
   reset_worktree
 }
 
+bzldiff() {
+  # Path to your Bazel WORKSPACE directory
+  workspace_path="~/Derivita"
+  # Path to your Bazel executable
+  bazel_path="bazel"
+  # Starting Revision SHA
+  previous_revision=$1
+  # Final Revision SHA
+  final_revision=$2
+
+  starting_hashes_json="/tmp/starting_hashes.json"
+  final_hashes_json="/tmp/final_hashes.json"
+  impacted_targets_path="/tmp/impacted_targets.txt"
+  bazel_diff="/tmp/bazel_diff"
+
+  "$bazel_path" run :bazel-diff --script_path="$bazel_diff"
+
+  git -C "$workspace_path" checkout "$previous_revision" --quiet
+
+  echo "Generating Hashes for Revision '$previous_revision'"
+  $bazel_diff generate-hashes -w "$workspace_path" -b "$bazel_path" $starting_hashes_json
+
+  git -C "$workspace_path" checkout "$final_revision" --quiet
+
+  echo "Generating Hashes for Revision '$final_revision'"
+  $bazel_diff generate-hashes -w "$workspace_path" -b "$bazel_path" $final_hashes_json
+
+  echo "Determining Impacted Targets"
+  $bazel_diff get-impacted-targets -sh $starting_hashes_json -fh $final_hashes_json -o $impacted_targets_path
+
+  impacted_targets=()
+  IFS=$'\n' read -d '' -r -a impacted_targets < $impacted_targets_path || true
+  formatted_impacted_targets=$(IFS=$'\n'; echo "${impacted_targets[*]}")
+  echo "Impacted Targets between $previous_revision and $final_revision:"
+  echo "$formatted_impacted_targets"
+  echo ""
+}
+
 
 # Set up nvm
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # place this after nvm initialization!
 autoload -U add-zsh-hook
@@ -267,8 +304,8 @@ alias lc='colorls --sd'
 alias bazel='bazelisk '
 
 # Derivita stuff
-alias ddev='PORT=8080 bazel run omaha/omaha_dev'
-alias dprod='PORT=8080 bazel run omaha/omaha'
+alias ddev='PORT=8080 bazel run omaha --mode=dev'
+alias dprod='PORT=8080 bazel run omaha --mode=prod'
 alias dsupport='PORT=8082 bazel run support/support'
 alias dspot='PORT=8081 bazel run spotcheck'
 alias dspot_dev='PORT=8081 bazel run spotcheck/spotcheck_dev'
@@ -378,3 +415,5 @@ bash $HOME/.motd
 
 # The next line updates PATH for Netlify's Git Credential Helper.
 if [ -f '/Users/cdiffrient/.netlify/helper/path.zsh.inc' ]; then source '/Users/cdiffrient/.netlify/helper/path.zsh.inc'; fi
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
